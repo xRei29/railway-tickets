@@ -1,0 +1,23 @@
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+  padding: 24px 0;
+}
+
+.empty {
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--text-dim);
+  margin-top: 80px;
+  padding: 40px;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-lg);
+}
+
+@media (max-width: 480px) {
+  .list {
+    grid-template-columns: 1fr;
+  }
+}
