@@ -1,0 +1,91 @@
+.wrapper { margin-bottom: 24px; }
+
+.title {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
+}
+
+.legend {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 16px;
+  font-size: 12px;
+  font-family: var(--font-mono);
+}
+
+/* Кольоровий квадрат перед кожним пунктом легенди */
+.lFree::before    { content: '■ '; color: #4caf50; }
+.lSelected::before { content: '■ '; color: var(--accent); }
+.lBooked::before  { content: '■ '; color: #ff4d4d; }
+
+.lFree, .lSelected, .lBooked { color: var(--text-muted); }
+
+/* Сітка: 9 колонок для стандартного відображення вагона */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  gap: 6px;
+  max-width: 460px;
+}
+
+.seat {
+  aspect-ratio: 1;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform var(--transition), opacity var(--transition);
+}
+
+.seat:hover:not(:disabled) { transform: scale(1.12); }
+
+/* Вільне місце — зелений */
+.free {
+  background: rgba(76, 175, 80, 0.15);
+  border-color: rgba(76, 175, 80, 0.3);
+  color: #4caf50;
+}
+
+/* Обране місце — акцентний колір теми */
+.selected {
+  background: var(--accent-dim);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* Заброньоване місце — червоний, заблоковане */
+.booked {
+  background: rgba(255, 77, 77, 0.1);
+  border-color: rgba(255, 77, 77, 0.2);
+  color: #ff4d4d;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.hint {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-dim);
+  margin: 20px 0;
+}
+
+.chosen {
+  margin-top: 14px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.chosen strong { color: var(--accent); }
+
+/* На мобільних — 6 колонок замість 9 */
+@media (max-width: 480px) {
+  .grid { grid-template-columns: repeat(6, 1fr); }
+}
